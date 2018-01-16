@@ -4,7 +4,9 @@
   vars:
     snaps_to_install:
       - brave
-      - hugo
+
+    snaps_classic_to_install:
+      - intellij-idea-community
 
     remotes_to_install:
       etcd:

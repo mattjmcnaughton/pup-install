@@ -15,6 +15,10 @@
     shell: "snap install {{ item }} && snap refresh {{ item }}"
     with_items: "{{ snaps_to_install }}"
 
+  - name: install classic snap packages
+    shell: "snap install {{ item }} --classic && snap refresh {{ item }}"
+    with_items: "{{ snaps_classic_to_install }}"
+
   # @TODO(mattjmcnaughton) Decide if I want to add configuration for
   # removing snaps.
 

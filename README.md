@@ -10,3 +10,5 @@ split contents into their own top-level pups, but its not yet necessary.
 - `pup_install_main_remotes_to_install`: List of dicts of bins to install and their
   locations.
 - `pup_install_main_snaps_to_install`: List of snap packages to install.
+- `pup_install_main_snaps_classic_to_install`: List of snap packages to install,
+  with the `--classic` flag.
