@@ -1,0 +1,22 @@
+galaxy_info:
+  author: mattjmcnaughton
+  description: A pup for installs.
+
+  license: Apache
+
+  min_ansible_version: 1.2
+
+  platforms:
+    - name: Debian
+      versions:
+        - all
+    - name: Ubuntu
+      versions:
+        - all
+
+  galaxy_tags:
+    - sheepdoge
+    - install
+    - snap-packages
+
+dependencies: []

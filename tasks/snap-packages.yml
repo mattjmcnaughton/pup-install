@@ -1,0 +1,21 @@
+---
+
+- block:
+  - name: update apt cache
+    apt:
+      update_cache: yes
+      cache_valid_time: 3600
+
+  - name: ensure snap installed
+    apt:
+      name: snapd
+      state: latest
+
+  - name: install snap package
+    shell: "snap install {{ item }} && snap refresh {{ item }}"
+    with_items: "{{ snaps_to_install }}"
+
+  # @TODO(mattjmcnaughton) Decide if I want to add configuration for
+  # removing snaps.
+
+  become: yes

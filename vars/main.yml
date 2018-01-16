@@ -1,0 +1,3 @@
+---
+snaps_to_install: "{{ pup_install_main_snaps_to_install }}"
+remotes_to_install: "{{ pup_install_main_remotes_to_install }}"

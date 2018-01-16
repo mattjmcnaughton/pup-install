@@ -1,0 +1,26 @@
+---
+
+- name: check if bin already installed
+  command: "which {{ item.key }}"
+  register: bin_is_installed
+  failed_when: bin_is_installed.rc > 1
+  changed_when: no
+
+- block:
+  # @TODO(mattjmcnaughton) Handle non-compressed artifact if necessary.
+  - name: download compressed artifact to temp
+    unarchive:
+      src: "{{ item.value.compressed_url }}"
+      dest: /tmp
+      remote_src: true
+
+  - name: move bin in directory
+    copy:
+      src: "/tmp/{{ item.value.bin_in_tmp_directory }}"
+      dest: "{{ item.value.path }}"
+      owner: root
+      mode: 755
+      remote_src: true
+
+  when: bin_is_installed.rc > 0
+  become: yes

@@ -1,0 +1,20 @@
+---
+- hosts: all
+
+  vars:
+    snaps_to_install:
+      - brave
+      - hugo
+
+    remotes_to_install:
+      etcd:
+        compressed_url: "https://github.com/coreos/etcd/releases/download/v3.2.14/etcd-v3.2.14-linux-amd64.tar.gz"
+        bin_in_tmp_directory: "etcd-v3.2.14-linux-amd64/etcd"
+        path: "/usr/bin/etcd"
+      etcdctl:
+        compressed_url: "https://github.com/coreos/etcd/releases/download/v3.2.14/etcd-v3.2.14-linux-amd64.tar.gz"
+        bin_in_tmp_directory: "etcd-v3.2.14-linux-amd64/etcdctl"
+        path: "/usr/bin/etcdctl"
+
+  tasks:
+    - include_tasks: tasks/main.yml
