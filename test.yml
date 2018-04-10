@@ -17,6 +17,10 @@
         compressed_url: "https://github.com/coreos/etcd/releases/download/v3.2.14/etcd-v3.2.14-linux-amd64.tar.gz"
         bin_in_tmp_directory: "etcd-v3.2.14-linux-amd64/etcdctl"
         path: "/usr/bin/etcdctl"
+      kops:
+        url: "https://github.com/kubernetes/kops/releases/download/1.8.1/kops-linux-amd64"
+        path: "/home/vagrant/kops"
+        owner: "vagrant"
 
   tasks:
     - include_tasks: tasks/main.yml

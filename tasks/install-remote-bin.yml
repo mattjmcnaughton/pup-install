@@ -7,20 +7,30 @@
   changed_when: no
 
 - block:
-  # @TODO(mattjmcnaughton) Handle non-compressed artifact if necessary.
-  - name: download compressed artifact to temp
-    unarchive:
-      src: "{{ item.value.compressed_url }}"
-      dest: /tmp
-      remote_src: true
+  - block:
+    - name: download compressed artifact to temp
+      unarchive:
+        src: "{{ item.value.compressed_url }}"
+        dest: /tmp
+        remote_src: true
 
-  - name: move bin in directory
-    copy:
-      src: "/tmp/{{ item.value.bin_in_tmp_directory }}"
-      dest: "{{ item.value.path }}"
-      owner: root
-      mode: 755
-      remote_src: true
+    - name: move bin in directory
+      copy:
+        src: "/tmp/{{ item.value.bin_in_tmp_directory }}"
+        dest: "{{ item.value.path }}"
+        owner: "{{ item.value.owner | default('root') }}"
+        mode: 755
+        remote_src: true
+    when: item.value.compressed_url is defined
+
+  - block:
+    - name: download bin
+      get_url:
+        url: "{{ item.value.url }}"
+        dest: "{{ item.value.path }}"
+        owner: "{{ item.value.owner | default('root') }}"
+        mode: 755
+    when: item.value.url is defined
 
   when: bin_is_installed.rc > 0
   become: yes
