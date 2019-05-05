@@ -21,6 +21,10 @@
         url: "https://github.com/kubernetes/kops/releases/download/1.8.1/kops-linux-amd64"
         path: "/home/vagrant/kops"
         owner: "vagrant"
+      bazel:
+        url: "https://github.com/bazelbuild/bazel/releases/download/0.25.0/bazel-0.25.0-linux-x86_64"
+        path: "/home/vagrant/bazel"
+        owner: "vagrant"
 
   tasks:
     - include_tasks: tasks/main.yml

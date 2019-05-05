@@ -29,7 +29,11 @@
         url: "{{ item.value.url }}"
         dest: "{{ item.value.path }}"
         owner: "{{ item.value.owner | default('root') }}"
-        mode: 755
+
+    - name: set file permissions
+      file:
+        path: "{{ item.value.path }}"
+        mode: 0755
     when: item.value.url is defined
 
   when: bin_is_installed.rc > 0
