@@ -1,8 +1,7 @@
 ---
 
-- include_tasks: "{{ item }}"
-  with_items:
-    - snap-packages.yml
+- name: install snaps
+  include_tasks: "snap-packages.yml"
 
 - name: install the desired bins
   include_tasks: "install-remote-bin.yml"
